@@ -14,5 +14,5 @@ git submodule add https://github.com/kevinb1/MyFunctions.git
 
 ```git
 cd MyFunctions
-git sumbodule update -- remote
+git sumbodule update --remote
 ```
