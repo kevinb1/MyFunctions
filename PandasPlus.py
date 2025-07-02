@@ -13,9 +13,9 @@ def sort_and_reset(df, col=None):
     """
 
     # Check if col is sting
-    if isinstance(col, str):
+    if isinstance(col, str) or isinstance(col, list):
         # Sort by col
-        df = df.sort_values(by=col)
+        df = df.sort_values(by=[col])
 
     # Resest index
     df = df.reset_index()
