@@ -16,3 +16,6 @@ git submodule add https://github.com/kevinb1/MyFunctions.git
 cd MyFunctions
 git pull origin main
 ```
+```git
+git supmodule update
+```
