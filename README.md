@@ -17,5 +17,5 @@ cd MyFunctions
 git pull origin main
 ```
 ```git
-git supmodule update
+git submodule update
 ```
