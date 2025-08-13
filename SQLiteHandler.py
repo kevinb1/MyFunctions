@@ -147,14 +147,3 @@ class SQLiteDatabase:
 
         delete_query = f"DELETE FROM {table_name} WHERE {condition_clause}"
         self.execute_query(delete_query, params)
-
-
-database = SQLiteDatabase('exampleDB.db')
-database.create_table(
-    'students', {"id": "INTEGER PRIMARY KEY", "name": "TEXT", "age": "INTEGER"})
-
-database.insert_data('students', [
-    {"id": 1, "name": "Alice", "age": 20},
-    {"id": 2, "name": "Bob", "age": 22},
-    {"id": 3, "name": "Charlie", "age": 23}
-])
