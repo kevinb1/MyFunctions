@@ -61,17 +61,29 @@ class SQLiteDatabase:
         """
         self.connection.close()
 
-    def create_table(self, table_name, columns):
+    def create_table(self, table_name, columns, foreign_keys=None):
         """
-        Method for easier table cration in the SQlite database, using the exceute_query method.
+        Creates a table in the SQLite database.
 
         Args:
-            table_name (str): name of the table to create
+            table_name (str): Name of the table to create.
             columns (dict): Dictionary with column names as keys and their types as values.
+            foreign_keys (list of str, optional): List of foreign key constraints, 
+                e.g., ["FOREIGN KEY(band_id) REFERENCES bands_seen(band_id)"].
         """
+        # Join columns with types
         columns_with_types = ', '.join(
             f"{col} {typ}" for col, typ in columns.items())
-        create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} ({columns_with_types})"
+
+        # Join foreign key constraints if provided
+        fk_clause = ''
+        if foreign_keys:
+            fk_clause = ', ' + ', '.join(foreign_keys)
+
+        # Build the final CREATE TABLE query
+        create_table_query = f"CREATE TABLE IF NOT EXISTS {table_name} ({columns_with_types}{fk_clause})"
+
+        # Execute query
         self.execute_query(create_table_query)
         self.connection.commit()
 
